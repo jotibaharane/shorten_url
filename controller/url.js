@@ -21,3 +21,7 @@ export const redirectShort = async (req, res) => {
     res.json({ shortcode, resp: "not found" });
   }
 };
+
+export const main = async (req, res) => {
+  res.render("index.ejs", { shortUrl: null });
+};

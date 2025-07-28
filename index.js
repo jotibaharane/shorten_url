@@ -1,7 +1,7 @@
 import { config } from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
-import { redirectShort, short } from "./controller/url.js";
+import { main, redirectShort, short } from "./controller/url.js";
 
 const app = new express();
 app.use(express.urlencoded({ extended: true }));
@@ -11,9 +11,7 @@ mongoose
   .then(() => console.log(`mongo connected`))
   .catch((err) => console.log(err?.message));
 
-app.get("/", (req, res) => {
-  res.render("index.ejs", { shortUrl: null });
-});
+app.get("/", main);
 
 app.post("/short", short);
 app.get("/:shortId", redirectShort);
